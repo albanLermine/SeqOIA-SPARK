@@ -18,6 +18,11 @@
 
 FROM debian:jessie
 
+# File Author / Maintainer
+LABEL authors="Jocelyn Brayet <jocelyn.brayet@aphp.fr>"
+
+################## BEGIN INSTALLATION ######################
+
 RUN echo "deb http://httpredir.debian.org/debian jessie-backports main contrib non-free" >> /etc/apt/sources.list
 
 RUN apt-get update && \
@@ -36,4 +41,6 @@ RUN update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/jav
 # CHANGE USER
 RUN useradd -ms /bin/bash docker
 USER docker
+
+##################### INSTALLATION END #####################
 
