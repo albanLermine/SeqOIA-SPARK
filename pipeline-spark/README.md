@@ -47,7 +47,7 @@ spark-submit --driver-memory 60g --executor-memory 31g --num-executors 32 --clas
 - Conversion SAM en BAM:
 
 ```
-./gatk-4.beta.5/gatk-launch BwaSpark --sparkMaster spark://134.158.75.222:7077 --input output/DRR002346_SAM/FullOutput.sam --output output/DRR002346_BAM -R /data/seqoia/hg19/hg19.fasta -image /data/seqoia/hg19/hg19.fasta.img
+./gatk-4.beta.5/gatk-launch BwaSpark --sparkMaster spark://$IP:7077 --input output/DRR002346_SAM/FullOutput.sam --output output/DRR002346_BAM -R /data/seqoia/hg19/hg19.fasta -image /data/seqoia/hg19/hg19.fasta.img
 ```
 
 END OF WIP
@@ -80,8 +80,8 @@ START_DATE=$(date +'%s')
 
 #export LD_LIBRARY_PATH=/usr/lib/native-mesos/ # if using MESOS
 #MASTER="mesos://zk://leader.mesos:2181/mesos" # Mesos
-#MASTER="spark://134.158.75.222:7077" # Spark Standalone
-BASE=hdfs://134.158.75.222/user/ogirardot/seqoia
+#MASTER="spark://$IP:7077" # Spark Standalone
+BASE=hdfs://$ip/user/ogirardot/seqoia
 LOCAL_BASE=/user/ogirardot
 SPARK_CMD=spark-submit
 REF_BASE=/data/seqoia/hg19/
